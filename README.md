@@ -2,7 +2,7 @@
 
 Must have: JAVA 8 SDK; PostegresSQL 12, NodeJS 16, NPM 9.
 
-Backend technologies: Java 8, Springboot 2, Hibernate with MVC concept.
+Backend technologies: Java 8, Springboot, Hibernate with MVC concept.
 Frontend techlogies: React and Axios with Typescript, Global paths, ECMA2021, Hooks and Responsive concepts.
 
 To run:
