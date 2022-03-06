@@ -8,8 +8,8 @@ import { SignUp } from 'pages/SignUp';
 
 const accountOverviewStub: IAccountOverviewStub = {
   supportContact: {
-    name: 'John Smith',
-    email: 'john.smith@feefo.com',
+    name: 'John Doe',
+    email: 'john.doe@notes.com',
     phone: '020 3362 4208',
   },
   salesOverview: {

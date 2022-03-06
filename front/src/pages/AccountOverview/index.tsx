@@ -39,7 +39,7 @@ export const AccountOverview: React.FC<IAccountOverview> = ({
         <Support>
           <span>Account Overview</span>
           <SupportContanct>
-            <span>YOUR FEEFO SUPPORT CONTACT</span>
+            <span>YOUR SUPPORT CONTACT</span>
             <SupportCard supportContact={supportContact} />
           </SupportContanct>
         </Support>

@@ -1,13 +1,13 @@
 import { AnimationContainer } from 'components/AnimationContainer';
 import { useAuth } from 'hooks/auth';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { FiPower, FiUser } from 'react-icons/fi';
 import { BiEnvelope, BiEnvelopeOpen, BiTrash } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
-import { cloneDeep } from 'lodash';
 
 import { INote } from 'interfaces';
+import { api } from 'services/api';
+import { toast } from 'react-toastify';
 import {
   Container,
   Header,
@@ -27,7 +27,7 @@ export const Notes: React.FC = () => {
     name: '',
     value: '',
   });
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   const handleOnChange = useCallback(({ target: { name, value } }) => {
     switch (name) {
@@ -41,30 +41,40 @@ export const Notes: React.FC = () => {
     }
   }, []);
 
-  const handleAdd = useCallback(() => {
-    let newNote: INote;
-    const clonedNotes = cloneDeep(notes);
-
-    if (selectedNote.id) {
-      const indexNote = clonedNotes.findIndex(
-        item => item.id === selectedNote.id,
-      );
-      clonedNotes[indexNote].name = inputRef.current?.value;
-      clonedNotes[indexNote].value = textAreaRef.current?.value;
-      setNotes(clonedNotes);
-    } else {
-      newNote = {
-        id: uuid(),
-        name: textAreaRef.current?.value,
+  const handleAddOrChange = useCallback(async () => {
+    try {
+      const objectToSend = {
+        name: inputRef.current?.value,
         value: textAreaRef.current?.value,
+        email: user.email,
       };
-      setNotes([...clonedNotes, { ...newNote }]);
-    }
 
-    if (textAreaRef.current?.value) textAreaRef.current.value = '';
-    if (inputRef.current?.value) inputRef.current.value = '';
-    setSelectedNote({ id: '', name: '', value: '' });
-  }, [selectedNote, notes]);
+      if (selectedNote?.id) {
+        Object.assign(objectToSend, { id: selectedNote?.id });
+      }
+
+      const response = await api.post('api/note/addOrUpdate', objectToSend);
+
+      setNotes(response.data);
+
+      if (textAreaRef.current?.value) textAreaRef.current.value = '';
+      if (inputRef.current?.value) inputRef.current.value = '';
+      setSelectedNote({ id: '', name: '', value: '' });
+    } catch (err) {
+      toast.error(
+        err instanceof Error ? err.message : 'Something went wrong!',
+        {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        },
+      );
+    }
+  }, [selectedNote, user.email]);
 
   const handleClear = useCallback(() => {
     if (textAreaRef.current?.value) textAreaRef.current.value = '';
@@ -79,13 +89,20 @@ export const Notes: React.FC = () => {
   }, []);
 
   const handleRemoveNote = useCallback(
-    note => {
-      const newNotes = notes.filter(item => item.id !== note.id);
-      setNotes(newNotes);
+    async note => {
+      await api.delete(`api/note/${note.id}`);
+      const response = await api.post(`api/note/findAllByUser/${user.id}`);
+      setNotes(response.data);
       handleClear();
     },
-    [notes, handleClear],
+    [handleClear, user.id],
   );
+
+  useEffect(() => {
+    api.post(`api/note/findAllByUser/${user.id}`).then(response => {
+      setNotes(response.data);
+    });
+  }, [user.id]);
 
   return (
     <Container>
@@ -125,16 +142,16 @@ export const Notes: React.FC = () => {
                 <button type="button" onClick={handleClear}>
                   Clear all
                 </button>
-                <button type="button" onClick={handleAdd}>
+                <button type="button" onClick={handleAddOrChange}>
                   {selectedNote.id ? 'Change Note' : 'Add Note'}
                 </button>
               </div>
             </TextAreaButtons>
           </TextArea>
           <NotesArea>
-            <div>List of available Notes</div>
+            <div>List of My Notes</div>
             {notes.map(note => (
-              <Note key={note.id}>
+              <Note key={String(note.id)}>
                 <div>Name: {note.name}</div>
                 <button type="button" onClick={() => handleOpenNote(note)}>
                   {selectedNote.id === note.id ? (

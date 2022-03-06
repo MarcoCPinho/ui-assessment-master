@@ -24,6 +24,7 @@ export interface ISignInCredentials {
 }
 
 export interface IUser {
+  id?: string;
   name: string;
   email: string;
 }
@@ -37,14 +38,14 @@ export interface ISignInFormData {
   password: string;
 }
 
-export interface ISignUpFormData {
+export interface ISignUpCredentials {
   name: string;
   email: string;
   password: string;
 }
 
 export interface INote {
-  id: string;
+  id?: string;
   name: string | undefined;
   value: string | undefined;
 }

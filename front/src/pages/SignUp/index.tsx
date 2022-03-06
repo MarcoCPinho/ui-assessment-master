@@ -9,7 +9,7 @@ import { api } from 'services/api';
 
 import { getValidationErrors } from 'utils/getValidationErrors';
 
-import { IErrors, ISignUpFormData } from 'interfaces';
+import { ISignUpCredentials } from 'interfaces';
 import { useAuth } from 'hooks/auth';
 import { AnimationContainer } from 'components/AnimationContainer';
 import logoImg from 'assets/logo.png';
@@ -23,12 +23,10 @@ export const SignUp: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<FormHandles>(null);
 
-  const { createUser } = useAuth();
-
   const navigate = useNavigate();
 
   const handleSubmit = useCallback(
-    async (data: ISignUpFormData) => {
+    async (data: ISignUpCredentials) => {
       try {
         setLoading(true);
         formRef.current?.setErrors({});
@@ -45,9 +43,7 @@ export const SignUp: React.FC = () => {
           abortEarly: false,
         });
 
-        // await api.post('/user', data);
-
-        await createUser(data);
+        await api.post('api/user/signup', data);
 
         navigate('/');
 
@@ -86,7 +82,7 @@ export const SignUp: React.FC = () => {
         setLoading(false);
       }
     },
-    [navigate, createUser],
+    [navigate],
   );
 
   return (

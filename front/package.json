@@ -11,6 +11,7 @@
     "@testing-library/react": "^11.1.1",
     "@testing-library/user-event": "^12.2.0",
     "@types/lodash": "^4.14.179",
+    "@types/qs": "^6.9.7",
     "@unform/core": "^2.1.6",
     "@unform/web": "^2.1.6",
     "axios": "^0.26.0",

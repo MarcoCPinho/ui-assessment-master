@@ -18,7 +18,7 @@ export const SignIn: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<FormHandles>(null);
 
-  const { signIn, user } = useAuth();
+  const { signIn } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = useCallback(
@@ -38,10 +38,7 @@ export const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        await signIn({
-          email: data.email,
-          password: data.password,
-        });
+        await signIn(data);
 
         navigate('/notes');
       } catch (err) {
@@ -68,10 +65,10 @@ export const SignIn: React.FC = () => {
           },
         );
       } finally {
-        if (loading) setLoading(false);
+        setLoading(false);
       }
     },
-    [signIn, navigate, loading],
+    [signIn, navigate],
   );
 
   return (

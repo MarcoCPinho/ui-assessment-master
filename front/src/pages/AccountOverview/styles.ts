@@ -19,6 +19,7 @@ export const Header = styled.div`
 
   a {
     text-decoration: none;
+    color: #000;
   }
 
   div:first-child {
