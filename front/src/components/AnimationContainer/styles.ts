@@ -19,7 +19,7 @@ export const Container = styled.div`
   justify-content: center;
   animation: ${appearFromLeft} 1s;
   form {
-    margin: 5rem 0;
+    margin: 2rem 0;
     width: 21rem;
     text-align: center;
     h1 {

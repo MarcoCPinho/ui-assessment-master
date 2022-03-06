@@ -1,6 +1,6 @@
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import logoImg from 'assets/logo.svg';
+import logoImg from 'assets/logo.png';
 import Button from 'components/Button';
 import Input from 'components/Input';
 import { useAuth } from 'hooks/auth';
@@ -78,7 +78,7 @@ export const SignIn: React.FC = () => {
     <Container>
       <Content>
         <AnimationContainer>
-          <img src={logoImg} alt="Feefo" />
+          <img src={logoImg} alt="PostIt" />
 
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Login</h1>

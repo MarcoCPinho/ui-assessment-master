@@ -12,7 +12,7 @@ import { getValidationErrors } from 'utils/getValidationErrors';
 import { IErrors, ISignUpFormData } from 'interfaces';
 import { useAuth } from 'hooks/auth';
 import { AnimationContainer } from 'components/AnimationContainer';
-import logoImg from '../../assets/logo.svg';
+import logoImg from 'assets/logo.png';
 
 import { Container, Content, Background } from './styles';
 
