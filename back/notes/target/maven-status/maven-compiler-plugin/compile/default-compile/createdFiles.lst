@@ -1,0 +1,14 @@
+br\com\notes\dto\generic\DTOAbstract.class
+br\com\notes\entity\generic\EntityAbstract.class
+br\com\notes\service\NotesService.class
+br\com\notes\configuration\SwaggerConfiguration.class
+br\com\notes\repository\INotes.class
+br\com\notes\dto\NotesDTO.class
+br\com\notes\repository\generic\IRepositoryAbsctract.class
+br\com\notes\controller\NotesController.class
+br\com\notes\converter\generic\ConverterAbstract.class
+br\com\notes\NotesApp.class
+br\com\notes\controller\generic\ControllerAbstract.class
+br\com\notes\entity\NotesEntity.class
+br\com\notes\service\generic\ServiceAbstract.class
+br\com\notes\converter\NotesConverter.class
