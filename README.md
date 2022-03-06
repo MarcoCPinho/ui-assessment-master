@@ -1,10 +1,10 @@
 # ui-assessment-master
 
 Must have: JAVA 8 SDK; PostegresSQL 12, NodeJS 16, NPM 9.
-
+----
 Backend technologies: Java 8, Springboot, Hibernate with MVC concept. </p>
 Frontend techlogies: React and Axios with Typescript, Global paths, ECMA2021, Hooks and Responsive concepts.
----
+----
 To run:
 1) Create any PostegresSQL 12 DB.
 2) Remember to change the db name, user, password and port on back/notes/src/main/resources to match on your current database.
