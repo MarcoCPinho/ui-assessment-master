@@ -18,8 +18,8 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<IAuthState>(() => {
-    const token = localStorage.getItem('@Feefo:token');
-    const user = localStorage.getItem('@Feefo:user');
+    const token = localStorage.getItem('@Notes:token');
+    const user = localStorage.getItem('@Notes:user');
 
     if (token && user) {
       api.defaults.headers.common.Authorization = token;
