@@ -121,6 +121,8 @@ export const NotesArea = styled.div`
 
 export const Note = styled.div`
   display: flex;
+  justify-content: space-between;
+  width: 100%;
 
   button {
     background: none;
@@ -129,10 +131,13 @@ export const Note = styled.div`
     border-radius: 10px;
     font-weight: 400;
     transition: background-color 0.2s;
-    margin-left: 1rem;
 
     &:hover {
       background: ${shade(0.2, '#ffffff')};
     }
   }
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
 `;

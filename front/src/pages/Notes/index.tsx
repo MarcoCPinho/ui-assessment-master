@@ -16,6 +16,7 @@ import {
   NotesArea,
   Note,
   TextAreaButtons,
+  ButtonsContainer,
 } from './styles';
 
 export const Notes: React.FC = () => {
@@ -153,16 +154,18 @@ export const Notes: React.FC = () => {
             {notes.map(note => (
               <Note key={String(note.id)}>
                 <div>Name: {note.name}</div>
-                <button type="button" onClick={() => handleOpenNote(note)}>
-                  {selectedNote.id === note.id ? (
-                    <BiEnvelopeOpen />
-                  ) : (
-                    <BiEnvelope />
-                  )}
-                </button>
-                <button type="button" onClick={() => handleRemoveNote(note)}>
-                  <BiTrash />
-                </button>
+                <ButtonsContainer>
+                  <button type="button" onClick={() => handleOpenNote(note)}>
+                    {selectedNote.id === note.id ? (
+                      <BiEnvelopeOpen />
+                    ) : (
+                      <BiEnvelope />
+                    )}
+                  </button>
+                  <button type="button" onClick={() => handleRemoveNote(note)}>
+                    <BiTrash />
+                  </button>
+                </ButtonsContainer>
               </Note>
             ))}
           </NotesArea>
