@@ -1,7 +1,6 @@
 package br.com.notes.dto;
 
 import br.com.notes.dto.generic.DTOAbstract;
-import br.com.notes.entity.UserEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)

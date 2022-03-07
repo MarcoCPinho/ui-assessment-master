@@ -3,13 +3,11 @@ package br.com.notes.entity;
 import br.com.notes.entity.generic.EntityAbstract;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "users")
-@AttributeOverride(name = "id", column = @Column(name="id_user"))
-@SequenceGenerator(name  = "SQ_GENERATOR", sequenceName = "user_sequence", allocationSize = 1)
+@AttributeOverride(name = "id", column = @Column(name = "id_user"))
+@SequenceGenerator(name = "SQ_GENERATOR", sequenceName = "user_sequence", allocationSize = 1)
 public class UserEntity extends EntityAbstract {
 
     @Column(name = "name", nullable = false)

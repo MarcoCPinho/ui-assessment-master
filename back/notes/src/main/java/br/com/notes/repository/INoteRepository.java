@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface INoteRepository extends IRepositoryAbsctract<NoteEntity> {
 
-  List<NoteEntity> findAllByUser(UserEntity user);
+    List<NoteEntity> findAllByUser(UserEntity user);
 
 }

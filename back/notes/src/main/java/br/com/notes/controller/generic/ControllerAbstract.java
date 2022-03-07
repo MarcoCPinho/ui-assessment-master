@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Component
-public abstract class   ControllerAbstract<D extends DTOAbstract, S extends ServiceAbstract> {
+public abstract class ControllerAbstract<D extends DTOAbstract, S extends ServiceAbstract> {
 
     @Autowired
     private S service;

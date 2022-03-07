@@ -1,6 +1,5 @@
 package br.com.notes.entity;
 
-import br.com.notes.dto.UserDTO;
 import br.com.notes.entity.generic.EntityAbstract;
 
 import javax.persistence.*;

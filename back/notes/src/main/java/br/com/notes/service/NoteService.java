@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -48,7 +47,7 @@ public class NoteService extends ServiceAbstract<
 
     public List<NoteDTO> findAllByUser(Long id) throws Exception {
         UserEntity user = userService.getRespository().findById(id).get();
-       return this.getConverter().of(this.getRespository().findAllByUser(user));
+        return this.getConverter().of(this.getRespository().findAllByUser(user));
     }
 
 }
